@@ -35,7 +35,7 @@ particular component is mentioned in parentheses):
 
 Each of these described in their own section respectively.
 
-\subsection{Some Notes}
+\subsection{Technical Details}
 The Presslufthammer system is implemented in Java and makes use of several tools
 and libraries to realise different features:
 
@@ -64,7 +64,7 @@ i.e. package \texttt{data} instead of package
   \subsection{Looking at Dremel}
     First take a look at the way the Dremel \cite{melnik2010dremel} system is
     organised.
-    It consists of a multi-layered architecture including:
+    As illustrated in \figref{netarch}, it consists of a multi-layered architecture including:
     \begin{itemize}
       \item A client to provide the user interface
       \item A root server to communicate with the client as well as to dispatch
@@ -73,16 +73,15 @@ i.e. package \texttt{data} instead of package
       \item Multiple leaf servers to access the data and execute queries on it
       \item And finally a seperate storage layer holding the data
     \end{itemize}
-    This is illustrated in \figref{netarch}.
     \begin{figure}[ht]
       \centering
       \includegraphics[width=.7\textwidth]{images/net-arch}
-      \caption{The overall architecture of Dremel\cite{melnik2010dremel}}
+      \caption{The architecture of Dremel\cite{melnik2010dremel}}
       \label{fig:netarch}
     \end{figure}
 
 
-  \subsection{Coordinator Leaf Architecture}
+  \subsection{Coordinator-Leaf Architecture}
     For the first milestone, we implemented only a root server
     (\texttt{Coordinator}) and the leaf servers (\texttt{Leafs}),
     omitting the intermediate layer.
@@ -112,7 +111,7 @@ i.e. package \texttt{data} instead of package
 
 
   \subsection{Client Nodes}
-    The Presslufthammer system allows for multiple Client nodes to connect.
+    The Presslufthammer system allows for multiple client nodes to connect.
     For testing and presentation of our prototype we implemented two such
     clients.
     \begin{itemize}
@@ -134,7 +133,7 @@ i.e. package \texttt{data} instead of package
     All implemented nodes use the \texttt{GenericHandler} and
     \texttt{GenericPipelineFactory} classes, based on standard Netty classes,
     to send and receive messages.
-    The system knows three types of network messages.
+    The system knows three types of network messages:
     \begin{itemize}
       \item \texttt{SimpleMessages} provide the means to transmit meta data
       \item \texttt{QueryMessages} contain the query objects used by

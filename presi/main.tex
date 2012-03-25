@@ -148,10 +148,13 @@ basicstyle=\ttfamily,
   Slave Node
   \begin{niitemize}
     \item Can act as Leaf or Inner node
-    % \item Data fetching / Storage Access
     \item Arrange themselves in an n-ary tree
-    \item Take care of splitting/aggregating queries
-    % \item Per Tablet Query processing
+    \item Aggregate partial results
+  \end{niitemize}
+  Ideas
+  \begin{niitemize}
+    \item Coordinator maintains a pool of Slaves to build trees on demand and per query
+    \item Intermediate Slaves could execute parts themselves
   \end{niitemize}
 \end{frame}
 
