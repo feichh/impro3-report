@@ -103,6 +103,68 @@ basicstyle=\ttfamily,
 \end{niitemize}
 \end{frame}
 
+
+\section{Network Architecture}
+\begin{frame}<presentation>{Network Architecture}
+  Dremel architecture consists of five layers
+  \begin{figure}
+    \centering
+    \includegraphics[width=.55\textwidth]{gfx/net-arch}
+  \end{figure}
+  Coordinator, Inner, Leaf and Client Nodes
+\end{frame}
+
+\begin{frame}<presentation>{Coordinator and Inner Nodes}
+  Coordinator Node
+  \begin{niitemize}
+    \item Central entry point
+    \item Accepts Queries from Clients
+    \item Hands Out Jobs to Leafs
+  \end{niitemize}
+  Inner Nodes
+  \begin{niitemize}
+    \item Not Implemented
+    \item Build an intermediate layer
+    \item Take care of splitting/aggregating queries
+  \end{niitemize}
+\end{frame}
+
+\begin{frame}<presentation>{Leaf and Client Nodes}
+  Leaf Node
+  \begin{niitemize}
+    \item Connection between Network and Storage
+    \item Data fetching / Storage Access
+    \item Per Tablet Query processing
+  \end{niitemize}
+  Client Node
+  \begin{niitemize}
+    \item Provides the UI
+    \item Attaches to a Coordinator
+    \item CLI or Jetty based
+  \end{niitemize}
+\end{frame}
+
+\begin{frame}<presentation>{Slave Nodes}
+  Slave Node
+  \begin{niitemize}
+    \item Can act as Leaf or Inner node
+    % \item Data fetching / Storage Access
+    \item Arrange themselves in an n-ary tree
+    \item Take care of splitting/aggregating queries
+    % \item Per Tablet Query processing
+  \end{niitemize}
+\end{frame}
+
+\begin{frame}<presentation>{Issues}
+  \begin{niitemize}
+   \item Coordination of Nodes: Intermediate Layer
+   \item Proper Serialization of Meta-Data for Transfer
+   \item Fault tolerance / Reconfigurability
+  \end{niitemize}
+\end{frame}
+
+
+
 \section{Storage}
 
 \begin{frame}<presentation>{Hierarchical vs. Columnar}
@@ -208,68 +270,6 @@ basicstyle=\ttfamily,
  \item Would greatly benefit from JIT
 \end{niitemize}
 \end{frame}
-
-\section{Network}
-\begin{frame}<presentation>{Network}
-  Dremel architecture consists of four types of nodes
-  \includegraphics[width=.55\textwidth]{gfx/net-arch}
-  \begin{niitemize}
-    \item Coordinator
-    \item Inner
-    \item Leaf and
-    \item Client Nodes
-  \end{niitemize}
-\end{frame}
-
-\begin{frame}<presentation>{Coordinator and Inner Nodes}
-  Coordinator Node
-  \begin{niitemize}
-    \item Central entry point
-    \item Accepts Queries from Clients
-    \item Hands Out Jobs to Leafs
-  \end{niitemize}
-  Inner Nodes
-  \begin{niitemize}
-    \item Not Implemented
-    \item Build an intermediate layer
-    \item Take care of splitting/aggregating queries
-  \end{niitemize}
-\end{frame}
-
-\begin{frame}<presentation>{Leaf and Client Nodes}
-  Leaf Node
-  \begin{niitemize}
-    \item Connection between Network and Storage
-    \item Data fetching / Storage Access
-    \item Per Tablet Query processing
-  \end{niitemize}
-  Client Node
-  \begin{niitemize}
-    \item Provides the UI
-    \item Attaches to a Coordinator
-    \item CLI or Jetty based
-  \end{niitemize}
-\end{frame}
-
-\begin{frame}<presentation>{Slave Nodes}
-  Slave Node
-  \begin{niitemize}
-    \item Leaf and Inner functionality combined
-    % \item Data fetching / Storage Access
-    \item Arrange themselves in an n-ary tree
-    \item Take care of splitting/aggregating queries
-    % \item Per Tablet Query processing
-  \end{niitemize}
-\end{frame}
-
-\begin{frame}<presentation>{Issues}
-  \begin{niitemize}
-   \item Coordination of Nodes: Intermediate Layer
-   \item Proper Serialization of Meta-Data for Transfer
-   \item Fault tolerance / Reconfigurability
-  \end{niitemize}
-\end{frame}
-
 
 
 \section{Conclusions and Further Work}
